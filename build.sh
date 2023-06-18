@@ -9,7 +9,7 @@ set -e
 
 CONTNAME=snappy
 IMGNAME=snapd
-RELEASE=18.04
+RELEASE=comp20081
 
 SUDO=""
 if [ -z "$(id -Gn|grep docker)" ] && [ "$(id -u)" != "0" ]; then
@@ -81,7 +81,7 @@ fi
 
 if [ -z "$($SUDO docker images|grep $IMGNAME)" ]; then
     cat << EOF > $BUILDDIR/Dockerfile
-FROM ubuntu:$RELEASE
+FROM pedrombmachado/ntu_lubuntu:$RELEASE
 ENV container docker
 ENV PATH "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 ENV LANG C.UTF-8
